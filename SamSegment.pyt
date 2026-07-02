@@ -10,7 +10,7 @@ Real edits, undo-able, schema-respecting, 100% offline AI.
 Requires sam_sidecar.py running on localhost:8765 (see README).
 Uses only the Python standard library — nothing to install in Pro's env.
 
-Repo: github.com/<you>/sam-click-to-polygon
+Repo: github.com/Kayarte/ClickSAM-Pro
 """
 
 import base64
