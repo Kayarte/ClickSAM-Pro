@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<metadata xml:lang="en">
+  <Esri>
+    <CreaDate>20260702</CreaDate>
+    <ArcGISFormat>1.0</ArcGISFormat>
+    <SyncOnce>TRUE</SyncOnce>
+  </Esri>
+  <tool name="ClickToPolygon" displayname="Click To Polygon (SAM)" toolboxalias="samsegment">
+    <summary>&lt;DIV&gt;&lt;P&gt;Click a building or object on your basemap imagery and SAM (a local AI model) traces its outline and saves it as a polygon in the layer you choose. Works fully offline. The sidecar service (sam_sidecar.py) must be running first.&lt;/P&gt;&lt;/DIV&gt;</summary>
+    <parameters>
+      <param name="in_points" displayname="Click Points" type="Required" direction="Input" datatype="Feature Set" expression="in_points">
+        <dialogReference>&lt;DIV&gt;&lt;P&gt;Where you want polygons. Click the pencil button, then click each target on the map (one click per building/object). You can also drag in an existing point layer to run a whole batch at once.&lt;/P&gt;&lt;/DIV&gt;</dialogReference>
+      </param>
+      <param name="target_layer" displayname="Target Polygon Layer" type="Required" direction="Input" datatype="Feature Layer" expression="target_layer">
+        <dialogReference>&lt;DIV&gt;&lt;P&gt;The polygon layer the new shapes get saved into. Must be editable. If the layer has fields named SAM_Model or SAM_Date, they are filled in automatically.&lt;/P&gt;&lt;/DIV&gt;</dialogReference>
+      </param>
+      <param name="snap_scale" displayname="Snapshot Scale" type="Required" direction="Input" datatype="String" expression="snap_scale">
+        <dialogReference>&lt;DIV&gt;&lt;P&gt;How far the tool zooms in before taking its picture of the map. Rule of thumb: the target should fill about a third to half of the picture. Small house = 1:300, typical = 1:500, long commercial building = 1:800 or more. Pick "Current view scale" to use exactly whatever zoom you are looking at right now.&lt;/P&gt;&lt;/DIV&gt;</dialogReference>
+      </param>
+      <param name="mask_pick" displayname="Target Type" type="Required" direction="Input" datatype="String" expression="mask_pick">
+        <dialogReference>&lt;DIV&gt;&lt;P&gt;What kind of thing you are clicking. "Building" makes the AI grab the whole structure (so it does not stop at a roof ridge line). "Small object" makes it grab just the small thing under your click, like a car, shed, or pool, without lassoing the area around it.&lt;/P&gt;&lt;/DIV&gt;</dialogReference>
+      </param>
+      <param name="simplify_px" displayname="Simplify Tolerance (pixels)" type="Optional" direction="Input" datatype="Double" expression="simplify_px">
+        <dialogReference>&lt;DIV&gt;&lt;P&gt;How much the outline gets smoothed. Low number = more vertices, follows every wiggle. High number = fewer vertices, cleaner straight edges but rounder corners. 2 is a good default; try 3-4 if footprints look jagged or noisy.&lt;/P&gt;&lt;/DIV&gt;</dialogReference>
+      </param>
+      <param name="hide_vectors" displayname="Hide vector layers during snapshot" type="Optional" direction="Input" datatype="Boolean" expression="hide_vectors">
+        <dialogReference>&lt;DIV&gt;&lt;P&gt;Temporarily turns off parcel lines, labels, and other drawn layers while the picture is taken, so the AI sees only clean imagery. Layers are turned back on when the tool finishes. Leave checked unless you have a reason not to.&lt;/P&gt;&lt;/DIV&gt;</dialogReference>
+      </param>
+    </parameters>
+  </tool>
+  <dataIdInfo>
+    <idCitation><resTitle>Click To Polygon (SAM)</resTitle></idCitation>
+    <idAbs>Click imagery, get polygons. Local SAM segmentation for ArcGIS Pro.</idAbs>
+  </dataIdInfo>
+</metadata>
