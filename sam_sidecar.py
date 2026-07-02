@@ -19,7 +19,7 @@ Run:
 Debug: every request writes overlay PNGs to ./sam_debug/
 (green = chosen mask, red circle = your click, _REJECTED = vetoed candidates)
 
-Repo: github.com/<you>/sam-click-to-polygon
+Repo: github.com/Kayarte/ClickSAM-Pro
 """
 
 import base64
