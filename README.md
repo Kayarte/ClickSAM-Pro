@@ -2,7 +2,7 @@ SAM Click-To-Polygon for ArcGIS Pro 🏠➡️⬠
 Click a building on your basemap → a local SAM model traces it → real
 polygon inserted into your real feature class.
 No ArcGIS Pro SDK, no Deep Learning framework install — just a Python toolbox and a tiny localhost service.
-
+*Its not the best but it does work* (:
 ```
 ArcGIS Pro (.pyt, stdlib only)           SAM Sidecar (its own env)
 ┌───────────────────────────┐  PNG+extent  ┌──────────────────────┐
@@ -67,3 +67,4 @@ SAM traces the roofline, which overhangs walls slightly — same
 behavior as every footprint product (MSBFP included)
 Model ladder if RAM/speed complains: `sam2.1_b.pt` → `sam2.1_s.pt` →
 `mobile_sam.pt` (edit `MODEL_PATH` in the sidecar)
+
